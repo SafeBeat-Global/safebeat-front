@@ -1,10 +1,21 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import { MenuScreen } from './src/screens/MenuScreen.js';
+
+const Stack = createNativeStackNavigator();
 
 const App = () => {
-  return (
-    <Text>Hello World</Text>
-  );
+
+    return (
+        <NavigationContainer>
+            <Stack.Navigator>
+                <Stack.Screen name="Menu" component={MenuScreen} options={{headerShown: false}}/>
+            </Stack.Navigator>
+        </NavigationContainer>
+
+    );
 };
 
 export default App;
