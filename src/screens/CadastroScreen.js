@@ -1,25 +1,32 @@
 // IMPORTS DO REACT
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Text, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import FontAwesome from 'react-native-vector-icons/dist/FontAwesome';
-import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
 // IMPORTS DO PROPRIO PROJETO
+import { handleRegisterUser } from '../components/ApiService.js';
 import { CadastroStyles } from '../styles/CadastroStyles.ts';
-import { validarNome, validarEmail, validarSenha, formatarTelefone } from '../components/CredentialsValidation.js';
-import { CampoDeEntrada } from '../renders/CadastroRender.js';
+import CredentialsValidation from '../components/CredentialsValidation.js';
+import { InputField } from '../components/InputField.js';
 
 const CadastroScreen = () => {
 
   const navigation = useNavigation();
-  const [nome, setNome] = useState('');
+  
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [senha, setSenha] = useState('');
-  const [confirmarSenha, setConfirmarSenha] = useState('');
-  const [telefone, setTelefone] = useState('');
-  const [emailColor, setEmailColor] = useState('#47992B');
+  const [pass, setPass] = useState('');
+  const [confirmPass, setConfirmPass] = useState('');
+  const [phone, setPhone] = useState('');
 
+  const [errorMessage, setErrorMessage] = useState('');
+
+  useEffect(() => {
+    if (name && email && pass && confirmPass && phone) {
+      setErrorMessage('');
+    }
+  }, [name, email, pass, confirmPass, phone]);
 
   return (
     <View style={CadastroStyles.containerMaster}>
@@ -38,63 +45,63 @@ const CadastroScreen = () => {
       </View>
       <View style={CadastroStyles.body}>
       <Text style={CadastroStyles.credencialsTitle}>NOME</Text>
-      <CampoDeEntrada
-        value={nome}
-        setValue={setNome}
-        validator={validarNome}
+      <InputField
+        iconLibrary='FontAwesome'
+        value={name}
+        setValue={setName}
+        validator={CredentialsValidation.validateName}
         iconName='user'
         placeholder='Digite seu nome'
         keyboardType='default'
       />
         <Text style={CadastroStyles.credencialsTitle}>EMAIL</Text>
-        <View style={CadastroStyles.inputContainer}>
-          <MaterialCommunityIcons
-            style={{...CadastroStyles.emailIcon, color: emailColor}}
-            name='email'
-            color={emailColor}>
-          </MaterialCommunityIcons>
-          <TextInput
-            style={{...CadastroStyles.input, borderColor: emailColor, color: emailColor}}
-            onChangeText={(text) => setEmail(text)}
-            onBlur={() => {
-              if (!validarEmail(email)) {
-                setEmailColor('red');
-              } else {
-                setEmailColor('#FDFDFF');
-              }
-            }}
-            value={email} placeholder='Digite seu email'
-            placeholderTextColor={emailColor}
-            keyboardType='email-address'>
-          </TextInput>
-        </View>
+        <InputField
+          iconLibrary='MaterialCommunityIcons'
+          value={email}
+          setValue={setEmail}
+          validator={CredentialsValidation.validateEmail}
+          iconName='email'
+          placeholder='Digite seu email'
+          keyboardType='default'
+        />
         <Text style={CadastroStyles.credencialsTitle}>SENHA</Text>
-        <CampoDeEntrada
-          value={senha}
-          setValue={setSenha}
-          validator={validarSenha}
+        <InputField
+          iconLibrary='FontAwesome'
+          value={pass}
+          setValue={setPass}
+          validator={CredentialsValidation.validatePass}
           iconName='lock'
           placeholder='Digite sua senha'
           keyboardType='default'
+          secureTextEntry={true}
         />
         <Text style={CadastroStyles.credencialsTitle}>CONFIRMAR SENHA</Text>
-        <CampoDeEntrada
-          value={senha}
-          setValue={setSenha}
-          validator={validarSenha}
+        <InputField
+          iconLibrary='FontAwesome'
+          value={confirmPass}
+          setValue={setConfirmPass}
+          validator={() => CredentialsValidation.validateConfirmPass(pass, confirmPass)}
           iconName='lock'
           placeholder='Digite sua senha'
           keyboardType='default'
+          secureTextEntry={true}
         />
         <Text style={CadastroStyles.credencialsTitle}>TELEFONE</Text>
-        <CampoDeEntrada
-          value={telefone}
-          setValue={setTelefone}
-          validator={formatarTelefone}
+        <InputField
+          iconLibrary='FontAwesome'
+          value={phone}
+          setValue={setPhone}
+          validator={CredentialsValidation.validatePhone}
           iconName='phone'
           placeholder='Digite seu telefone'
           keyboardType='phone-pad'
+          formatar={true}
+          maxLength={15}
+          minLength={15}
         />
+        <View style={CadastroStyles.errorContainer}>
+          {errorMessage ? <Text style={CadastroStyles.errorMessage}>{errorMessage}</Text> : null}
+        </View>
         <TouchableWithoutFeedback
           onPress={() =>
             navigation.navigate('Login')
@@ -102,7 +109,8 @@ const CadastroScreen = () => {
           <Text style={CadastroStyles.alreadyHaveAccountText}>Já tenho uma conta</Text>
         </TouchableWithoutFeedback>
         <TouchableOpacity
-          style={CadastroStyles.cadastrarButton}>
+          style={CadastroStyles.cadastrarButton}
+          onPress={() => handleRegisterUser(name, email, pass, confirmPass, phone, setErrorMessage)}>
           <Text style={CadastroStyles.cadastrarText}>CADASTRAR</Text>
         </TouchableOpacity>
       </View>

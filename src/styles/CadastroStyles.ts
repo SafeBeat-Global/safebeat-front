@@ -31,6 +31,9 @@ const CadastroStyles = StyleSheet.create({
     height: screenHeight * 0.05,
     width: screenWidth * 0.73,
   },
+  errorContainer: {
+    height: screenHeight * 0.075,
+  },
   // CONTAINERS
 
   //BUTTONS
@@ -74,7 +77,6 @@ const CadastroStyles = StyleSheet.create({
     color: '#181F25',
     fontSize: screenHeight * 0.022, 
     textAlign: 'center',
-    marginTop: screenHeight * 0.065,
     marginBottom: screenHeight *0.01,
     fontWeight: 'bold',
   },
@@ -83,6 +85,12 @@ const CadastroStyles = StyleSheet.create({
     fontSize: screenHeight * 0.035,
     textAlign: 'center',
     fontWeight: 'bold',
+  },
+  errorMessage: {
+    fontSize: screenHeight * 0.02,
+    fontWeight: 'bold',
+    color: 'red',
+    textAlign: 'center',
   },
   // TEXTS
 
@@ -94,10 +102,6 @@ const CadastroStyles = StyleSheet.create({
   },
   defaultIcon: {
     left: screenWidth * 0.04,
-    fontSize: screenHeight * 0.04,
-  },
-  emailIcon: {
-    left: screenWidth * 0.03,
     fontSize: screenHeight * 0.04,
   },
   // ICONS

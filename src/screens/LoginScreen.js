@@ -1,18 +1,28 @@
 // IMPORTS DO REACT
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Text, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import FontAwesome from 'react-native-vector-icons/dist/FontAwesome';
-import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
 // IMPORTS DO PROPRIO PROJETO
 import { LoginStyles } from '../styles/LoginStyles.ts';
+import CredentialsValidation from '../components/CredentialsValidation.js';
+import { InputField } from '../components/InputField.js';
 
 const LoginScreen = () => {
 
   const navigation = useNavigation();
+
   const [email, setEmail] = useState('');
-  const [senha, setSenha] = useState('');
+  const [pass, setPass] = useState('');
+
+  const [errorMessage, setErrorMessage] = useState('');
+
+  useEffect(() => {
+    if (email && pass) {
+      setErrorMessage('');
+    }
+  }, [email, pass]);
 
   return (
     <View style={LoginStyles.containerMaster}>
@@ -31,39 +41,28 @@ const LoginScreen = () => {
       </View>
       <View style={LoginStyles.body}>
         <Text style={LoginStyles.credencialsTitle}>EMAIL</Text>
-        <View style={LoginStyles.inputContainer}>
-          <MaterialCommunityIcons
-            style={LoginStyles.emailIcon}
-            name='email'
-            color='#47992B'>
-          </MaterialCommunityIcons>
-          <TextInput
-            style={LoginStyles.input}
-            onChangeText={(text) =>
-              setEmail(text)
-            }
-            value={email} placeholder='Digite seu email'
-            placeholderTextColor="#47992B"
-            keyboardType='email-address'>
-          </TextInput>
-        </View>
+        <InputField
+          iconLibrary='MaterialCommunityIcons'
+          value={email}
+          setValue={setEmail}
+          validator={CredentialsValidation.validateEmail}
+          iconName='email'
+          placeholder='Digite seu email'
+          keyboardType='default'
+        />
         <Text style={LoginStyles.credencialsTitle}>SENHA</Text>
-        <View style={LoginStyles.inputContainer}>
-          <FontAwesome
-            style={LoginStyles.lockIcon}
-            name='lock'
-            color='#47992B'>
-          </FontAwesome>
-          <TextInput
-            style={LoginStyles.input}
-            onChangeText={(text) =>
-              setSenha(text)
-            }
-            value={senha} placeholder='Digite sua senha'
-            placeholderTextColor="#47992B"
-            keyboardType='default'
-            secureTextEntry={true}>
-          </TextInput>
+        <InputField
+          iconLibrary='FontAwesome'
+          value={pass}
+          setValue={setPass}
+          validator={CredentialsValidation.validatePass}
+          iconName='lock'
+          placeholder='Digite sua senha'
+          keyboardType='default'
+          secureTextEntry={true}
+        />
+        <View style={LoginStyles.errorContainer}>
+          {errorMessage ? <Text style={LoginStyles.errorMessage}>{errorMessage}</Text> : null}
         </View>
         <TouchableWithoutFeedback
           onPress={() =>
@@ -72,11 +71,11 @@ const LoginScreen = () => {
           <Text style={LoginStyles.alreadyHaveAccountText}>Não tenho uma conta</Text>
         </TouchableWithoutFeedback>
         <TouchableOpacity
-          style={LoginStyles.loginButton}
-            onPress={() =>
+          onPress={() =>
             navigation.navigate('Home')
-          }>
-          <Text style={LoginStyles.loginText}>ENTRAR</Text>
+          }
+          style={LoginStyles.cadastrarButton}>
+          <Text style={LoginStyles.cadastrarText}>ENTRAR</Text>
         </TouchableOpacity>
       </View>
     </View>
