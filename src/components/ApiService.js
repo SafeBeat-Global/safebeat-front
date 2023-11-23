@@ -32,6 +32,7 @@ export const handleRegisterUser = async (name, email, pass, confirmPass, phone, 
         email: email,
         senha: pass,
         telefone: phone,
+        tipoUsuario: 'comum'
       })
     });
 
