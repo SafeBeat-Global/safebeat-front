@@ -7,13 +7,19 @@ import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommu
 
 // IMPORTS DO PROPRIO PROJETO
 import { CadastroStyles } from '../styles/CadastroStyles.ts';
+import { validarNome, validarEmail, validarSenha, formatarTelefone } from '../components/CredentialsValidation.js';
+import { CampoDeEntrada } from '../renders/CadastroRender.js';
 
 const CadastroScreen = () => {
 
   const navigation = useNavigation();
+  const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const [confirmarSenha, setConfirmarSenha] = useState('');
+  const [telefone, setTelefone] = useState('');
+  const [emailColor, setEmailColor] = useState('#47992B');
+
 
   return (
     <View style={CadastroStyles.containerMaster}>
@@ -31,60 +37,64 @@ const CadastroScreen = () => {
         <Text style={CadastroStyles.titleText}>CADASTRO</Text>
       </View>
       <View style={CadastroStyles.body}>
+      <Text style={CadastroStyles.credencialsTitle}>NOME</Text>
+      <CampoDeEntrada
+        value={nome}
+        setValue={setNome}
+        validator={validarNome}
+        iconName='user'
+        placeholder='Digite seu nome'
+        keyboardType='default'
+      />
         <Text style={CadastroStyles.credencialsTitle}>EMAIL</Text>
         <View style={CadastroStyles.inputContainer}>
           <MaterialCommunityIcons
-            style={CadastroStyles.emailIcon}
+            style={{...CadastroStyles.emailIcon, color: emailColor}}
             name='email'
-            color='#47992B'>
+            color={emailColor}>
           </MaterialCommunityIcons>
           <TextInput
-            style={CadastroStyles.input}
-            onChangeText={(text) =>
-              setEmail(text)
-            }
+            style={{...CadastroStyles.input, borderColor: emailColor, color: emailColor}}
+            onChangeText={(text) => setEmail(text)}
+            onBlur={() => {
+              if (!validarEmail(email)) {
+                setEmailColor('red');
+              } else {
+                setEmailColor('#FDFDFF');
+              }
+            }}
             value={email} placeholder='Digite seu email'
-            placeholderTextColor="#47992B"
+            placeholderTextColor={emailColor}
             keyboardType='email-address'>
           </TextInput>
         </View>
         <Text style={CadastroStyles.credencialsTitle}>SENHA</Text>
-        <View style={CadastroStyles.inputContainer}>
-          <FontAwesome
-            style={CadastroStyles.lockIcon}
-            name='lock'
-            color='#47992B'>
-          </FontAwesome>
-          <TextInput
-            style={CadastroStyles.input}
-            onChangeText={(text) =>
-              setSenha(text)
-            }
-            value={senha} placeholder='Digite sua senha'
-            placeholderTextColor="#47992B"
-            keyboardType='default'
-            secureTextEntry={true}>
-          </TextInput>
-        </View>
+        <CampoDeEntrada
+          value={senha}
+          setValue={setSenha}
+          validator={validarSenha}
+          iconName='lock'
+          placeholder='Digite sua senha'
+          keyboardType='default'
+        />
         <Text style={CadastroStyles.credencialsTitle}>CONFIRMAR SENHA</Text>
-        <View style={CadastroStyles.inputContainer}>
-          <FontAwesome
-            style={CadastroStyles.lockIcon}
-            name='lock'
-            color='#47992B'>  
-          </FontAwesome>
-          <TextInput
-            style={CadastroStyles.input}
-            onChangeText={(text) =>
-              setConfirmarSenha(text)
-            }
-            value={confirmarSenha}
-            placeholder='Confirme sua senha'
-            placeholderTextColor="#47992B"
-            keyboardType='default'
-            secureTextEntry={true}>
-          </TextInput>
-        </View>
+        <CampoDeEntrada
+          value={senha}
+          setValue={setSenha}
+          validator={validarSenha}
+          iconName='lock'
+          placeholder='Digite sua senha'
+          keyboardType='default'
+        />
+        <Text style={CadastroStyles.credencialsTitle}>TELEFONE</Text>
+        <CampoDeEntrada
+          value={telefone}
+          setValue={setTelefone}
+          validator={formatarTelefone}
+          iconName='phone'
+          placeholder='Digite seu telefone'
+          keyboardType='phone-pad'
+        />
         <TouchableWithoutFeedback
           onPress={() =>
             navigation.navigate('Login')

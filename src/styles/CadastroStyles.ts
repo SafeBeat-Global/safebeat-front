@@ -17,9 +17,9 @@ const CadastroStyles = StyleSheet.create({
   },
   body: {
     width: screenWidth * 0.8,
-    height: screenHeight * 0.7,
+    height: screenHeight * 0.75,
     backgroundColor: '#47992B',
-    marginTop: screenHeight * 0.08,
+    marginTop: screenHeight * 0.05,
     borderRadius: screenWidth * 0.1,
   },
   inputContainer: {
@@ -28,7 +28,7 @@ const CadastroStyles = StyleSheet.create({
     backgroundColor: '#181F25',
     alignSelf: 'center',
     borderRadius: screenWidth * 0.03,
-    height: screenHeight * 0.065,
+    height: screenHeight * 0.05,
     width: screenWidth * 0.73,
   },
   // CONTAINERS
@@ -47,11 +47,10 @@ const CadastroStyles = StyleSheet.create({
   //INPUTS
   input: {
     flex: 1,
-    color: 'white',
     position: 'absolute',
     left: screenWidth * 0.14,
     width: screenWidth * 0.6,
-    fontSize: screenHeight * 0.025,
+    fontSize: screenHeight * 0.022,
     alignSelf: 'center',
     fontWeight: 'bold',
   },
@@ -66,8 +65,8 @@ const CadastroStyles = StyleSheet.create({
   },
   credencialsTitle: {
     color: '#181F25',
-    fontSize: screenHeight * 0.025,
-    marginTop: screenHeight * 0.03,
+    fontSize: screenHeight * 0.023,
+    marginTop: screenHeight * 0.025,
     marginLeft: screenWidth * 0.06,
     fontWeight: 'bold',
   },
@@ -75,7 +74,7 @@ const CadastroStyles = StyleSheet.create({
     color: '#181F25',
     fontSize: screenHeight * 0.022, 
     textAlign: 'center',
-    marginTop: screenHeight * 0.15,
+    marginTop: screenHeight * 0.065,
     marginBottom: screenHeight *0.01,
     fontWeight: 'bold',
   },
@@ -93,12 +92,12 @@ const CadastroStyles = StyleSheet.create({
     position: 'absolute',
     fontSize: screenHeight * 0.07,
   },
-  emailIcon: {
-    left: screenWidth * 0.03,
+  defaultIcon: {
+    left: screenWidth * 0.04,
     fontSize: screenHeight * 0.04,
   },
-  lockIcon: {
-    left: screenWidth * 0.04,
+  emailIcon: {
+    left: screenWidth * 0.03,
     fontSize: screenHeight * 0.04,
   },
   // ICONS

@@ -28,7 +28,7 @@ const LoginStyles = StyleSheet.create({
     backgroundColor: '#181F25',
     alignSelf: 'center',
     borderRadius: screenWidth * 0.03,
-    height: screenHeight * 0.065,
+    height: screenHeight * 0.055,
     width: screenWidth * 0.73,
   },
   // CONTAINERS

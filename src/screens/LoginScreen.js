@@ -72,7 +72,10 @@ const LoginScreen = () => {
           <Text style={LoginStyles.alreadyHaveAccountText}>Não tenho uma conta</Text>
         </TouchableWithoutFeedback>
         <TouchableOpacity
-          style={LoginStyles.loginButton}>
+          style={LoginStyles.loginButton}
+            onPress={() =>
+            navigation.navigate('Home')
+          }>
           <Text style={LoginStyles.loginText}>ENTRAR</Text>
         </TouchableOpacity>
       </View>
