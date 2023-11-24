@@ -98,6 +98,7 @@ export const getUserInfo = async (email) => {
       }
 
       const userInfo = {
+        id: user.id,
         nome: user.nome,
         email: user.email,
         telefone: user.telefone
@@ -130,8 +131,11 @@ export const handleDeleteUser = async (email) => {
         }
       });
 
-      const data = await response.json();
-      return data;
+      if (!response.ok) {
+        return null;
+      }
+
+      return true;
     }
 
   } catch (error) {
@@ -139,5 +143,3 @@ export const handleDeleteUser = async (email) => {
     throw error;
   }
 };
-
-

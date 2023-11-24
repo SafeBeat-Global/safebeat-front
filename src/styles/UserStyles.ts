@@ -4,6 +4,8 @@ const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
 const UserStyles = StyleSheet.create({
+
+  // CONTAINERS
   containerMaster: {
     flex: 1,
     backgroundColor: '#181F25',
@@ -11,19 +13,46 @@ const UserStyles = StyleSheet.create({
   containerProfile: {
     alignItems: 'center',
   },
-  containerInfo: {
+  //CONTAINERS
 
-  },
-
+  // BUTTONS
   deleteButton: {
     width: screenWidth * 0.35,
-    height: screenHeight * 0.05,
+    height: screenHeight * 0.06,
     borderRadius: screenHeight * 0.01,
-    marginTop: screenHeight * 0.3,
+    marginTop: screenHeight * 0.2,
     backgroundColor: '#e12f2f',
     alignItems: 'center',
     alignSelf: 'center',
+    justifyContent: 'center',
   },
+  saveButton: {
+    width: screenWidth * 0.45,
+    height: screenHeight * 0.065,
+    borderRadius: screenHeight * 0.01,
+    marginTop: screenHeight * 0.05,
+    backgroundColor: '#47992B',
+    alignSelf: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  //BUTTONS
+
+  // INPUTS
+  phoneInput: {
+    width: screenWidth * 0.6,
+    fontSize: screenHeight * 0.025,
+    borderRadius: screenHeight * 0.01,
+    marginTop: screenHeight * 0.05,
+    alignSelf: 'center',
+    textAlign: 'center',
+    backgroundColor: '#101519',
+    fontWeight: 'bold',
+    color: 'white',
+  },
+  //INPUTS
+
+  // TEXTS
   deleteText: {
     fontSize: screenHeight * 0.025,
     fontWeight: 'bold',
@@ -36,10 +65,19 @@ const UserStyles = StyleSheet.create({
   },
   infoText: {
     fontSize: screenHeight * 0.025,
-    marginTop: screenHeight * 0.05,
+    marginTop: screenHeight * 0.01,
+    alignSelf: 'center',
     fontWeight: 'bold',
     color: 'white',
   },
+  saveText: {
+    fontSize: screenHeight * 0.025,
+    fontWeight: 'bold',
+    color: 'white',
+  },
+  //TEXTS
+
+  // ICONS
   userIcon: {
     fontSize: screenHeight * 0.2,
     marginTop: screenHeight * 0.05,
@@ -50,6 +88,8 @@ const UserStyles = StyleSheet.create({
     left: screenWidth * 0.35,
     position: 'absolute',
   },
+  //ICONS
+
 });
 
 export { UserStyles };
