@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { View, Image } from 'react-native';
 import { HomeStyles } from '../../styles/HomeStyles';
-import BloodPressure from '../../components/BloodPressure.js';
-import HeartRate from '../../components/HeartRate.js';
+import BloodPressure from '../../components/healthmetrics/BloodPressure.js';
+import HeartRate from '../../components/healthmetrics/HeartRate.js';
 
 const HomeScreen = () => {
 

@@ -1,11 +1,12 @@
 // IMPORTS DO REACT
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { View, Text, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import FontAwesome from 'react-native-vector-icons/dist/FontAwesome';
 
 // IMPORTS DO PROPRIO PROJETO
-import { handleRegisterUser } from '../components/ApiService.js';
+import { UserContext } from '../contexts/UserContext.js';
+import { handleRegisterUser } from '../services/ApiService.js';
 import { SignUpStyles } from '../styles/SignUpStyles.ts';
 import CredentialsValidation from '../components/CredentialsValidation.js';
 import { InputField } from '../components/InputField.js';
@@ -19,14 +20,24 @@ const SignUpScreen = () => {
   const [pass, setPass] = useState('');
   const [confirmPass, setConfirmPass] = useState('');
   const [phone, setPhone] = useState('');
+  const { setUserEmail } = useContext(UserContext);
 
   const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
   useEffect(() => {
     if (name && email && pass && confirmPass && phone) {
       setErrorMessage('');
     }
   }, [name, email, pass, confirmPass, phone]);
+
+  const signUpUser = async () => {
+    const data = await handleRegisterUser(name, email, pass, confirmPass, phone, setErrorMessage, setSuccessMessage);
+    if (data) {
+      setUserEmail(email);
+      navigation.navigate('MyTabs');
+    }
+  };
 
   return (
     <View style={SignUpStyles.containerMaster}>
@@ -99,8 +110,9 @@ const SignUpScreen = () => {
           maxLength={15}
           minLength={15}
         />
-        <View style={SignUpStyles.errorContainer}>
+        <View style={SignUpStyles.messageContainer}>
           {errorMessage ? <Text style={SignUpStyles.errorMessage}>{errorMessage}</Text> : null}
+          {successMessage ? <Text style={SignUpStyles.successMessage}>{successMessage}</Text> : null}
         </View>
         <TouchableWithoutFeedback
           onPress={() =>
@@ -110,7 +122,7 @@ const SignUpScreen = () => {
         </TouchableWithoutFeedback>
         <TouchableOpacity
           style={SignUpStyles.cadastrarButton}
-          onPress={() => handleRegisterUser(name, email, pass, confirmPass, phone, setErrorMessage)}>
+          onPress={signUpUser}>
           <Text style={SignUpStyles.cadastrarText}>CADASTRAR</Text>
         </TouchableOpacity>
       </View>

@@ -31,7 +31,7 @@ const SignUpStyles = StyleSheet.create({
     height: screenHeight * 0.05,
     width: screenWidth * 0.73,
   },
-  errorContainer: {
+  messageContainer: {
     height: screenHeight * 0.075,
   },
   // CONTAINERS
@@ -98,8 +98,20 @@ const SignUpStyles = StyleSheet.create({
   errorMessage: {
     fontSize: screenHeight * 0.02,
     fontWeight: 'bold',
-    color: 'red',
+    color: '#e12f2f',
     textAlign: 'center',
+    textShadowColor: 'rgba(0, 0, 0, 0.3)',
+    textShadowOffset: {width: -1, height: 1},
+    textShadowRadius: 1,
+  },
+  successMessage: {
+    fontSize: screenHeight * 0.02,
+    fontWeight: 'bold',
+    color: '#FDFDFF',
+    textAlign: 'center',
+    textShadowColor: 'rgba(0, 0, 0, 0.3)',
+    textShadowOffset: {width: -1, height: 1},
+    textShadowRadius: 1,
   },
   // TEXTS
 

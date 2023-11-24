@@ -98,7 +98,7 @@ const LoginStyles = StyleSheet.create({
   errorMessage: {
     fontSize: screenHeight * 0.02,
     fontWeight: 'bold',
-    color: 'red',
+    color: '#e12f2f',
     textAlign: 'center',
   },
   // TEXTS

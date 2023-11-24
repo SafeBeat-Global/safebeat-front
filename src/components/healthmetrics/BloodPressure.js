@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { HomeStyles } from '../styles/HomeStyles.ts';
+import { HomeStyles } from '../../styles/HomeStyles.ts';
 
 const BloodPressure = ({ systole, diastole, color }) => (
   <View style={HomeStyles.containerBloodPressure}>
