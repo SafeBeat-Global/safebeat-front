@@ -8,9 +8,9 @@ const HeartRate = ({ heartRate, color }) => (
   <View>
     <Animatable.View animation={{ 0: { scale: 1 }, 0.5: { scale: 1.2 }, 1: { scale: 1 } }} iterationCount="infinite" duration={2500} style={{flexDirection: 'row', alignItems: 'center'}}>
       <Icon name="heart" size={30} color="#900" />
-      <Text style={{...HomeStyles.heartRateNumber, color}}>{heartRate}</Text>
+      <Text style={{...HomeStyles.bloodNumber, color}}>{heartRate}</Text>
     </Animatable.View>
-    <Text style={HomeStyles.heartRateLabel}>PUL / min</Text>
+    <Text style={HomeStyles.bloodPressureLabel}>PUL / min</Text>
   </View>
 );
 

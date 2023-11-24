@@ -31,6 +31,7 @@ const MenuStyles = StyleSheet.create({
     borderRadius: screenWidth * 0.08,
     justifyContent: 'center',
     marginTop: screenHeight * 0.04,
+
   },
   // BUTTONS
 
@@ -40,12 +41,18 @@ const MenuStyles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     fontSize: screenHeight * 0.035,
+    textShadowColor: 'rgba(0, 0, 0, 0.75)',
+    textShadowOffset: {width: -1, height: 1},
+    textShadowRadius: 5
   },
   loginText: {
     color: '#FDFDFF',
     fontWeight: 'bold',
     textAlign: 'center',
     fontSize: screenHeight * 0.035,
+    textShadowColor: 'rgba(0, 0, 0, 0.75)',
+    textShadowOffset: {width: -1, height: 1},
+    textShadowRadius: 5
   },
   // TEXTS
 

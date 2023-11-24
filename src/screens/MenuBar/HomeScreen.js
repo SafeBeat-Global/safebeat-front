@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { View, Image } from 'react-native';
-import { HomeStyles } from '../styles/HomeStyles.ts';
-import BloodPressure from '../components/BloodPressure.js'
-import HeartRate from '../components/HeartRate.js';
+import { HomeStyles } from '../../styles/HomeStyles';
+import BloodPressure from '../../components/BloodPressure.js';
+import HeartRate from '../../components/HeartRate.js';
 
-const HomeScreen = ({navigation}) => {
+const HomeScreen = () => {
 
   const [diastole, setDiastole] = useState(60);
   const [systole, setSystole] = useState(90);
@@ -29,8 +29,8 @@ const HomeScreen = ({navigation}) => {
         return newSystole >= 90 && newSystole <= 130 ? newSystole : prevSystole;
       });
       setHeartRate(prevHeartRate => {
-        const newHeartRate = prevHeartRate + (Math.random() > 0.5 ? 1 : -1);
-        return newHeartRate >= 40 && newHeartRate <= 120 ? newHeartRate : prevHeartRate;
+        const newHeartRate = prevHeartRate + (Math.random() > 0.5 ? 2 : -2);
+        return newHeartRate >= 40 && newHeartRate <= 200 ? newHeartRate : prevHeartRate;
       });
     }, 1000);
     return () => clearInterval(interval);
@@ -40,7 +40,7 @@ const HomeScreen = ({navigation}) => {
     <View style={HomeStyles.containerMaster}>
       <Image
         style={HomeStyles.logo}
-        source={require('../assets/logo-only.png')}
+        source={require('../../assets/logo-only.png')}
       />
       <BloodPressure systole={systole} diastole={diastole} color={calculateColor((systole+diastole)/2, 95)} />
       <HeartRate heartRate={heartRate} color={calculateColor(heartRate, 70)} />
@@ -48,5 +48,4 @@ const HomeScreen = ({navigation}) => {
   );
 };
 
-
-export { HomeScreen };
+export default HomeScreen;

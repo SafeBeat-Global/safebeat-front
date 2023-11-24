@@ -3,7 +3,7 @@ import { StyleSheet, Dimensions } from 'react-native';
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
-const CadastroStyles = StyleSheet.create({
+const SignUpStyles = StyleSheet.create({
 
   //CONTAINERS
   containerMaster: {
@@ -72,6 +72,9 @@ const CadastroStyles = StyleSheet.create({
     marginTop: screenHeight * 0.025,
     marginLeft: screenWidth * 0.06,
     fontWeight: 'bold',
+    textShadowColor: 'rgba(0, 0, 0, 0.15)',
+    textShadowOffset: {width: -1, height: 1},
+    textShadowRadius: 1,
   },
   alreadyHaveAccountText: {
     color: '#181F25',
@@ -79,12 +82,18 @@ const CadastroStyles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: screenHeight *0.01,
     fontWeight: 'bold',
+    textShadowColor: 'rgba(0, 0, 0, 0.2)',
+    textShadowOffset: {width: -1, height: 1},
+    textShadowRadius: 1,
   },
   cadastrarText: {
     color: 'white',
     fontSize: screenHeight * 0.035,
     textAlign: 'center',
     fontWeight: 'bold',
+    textShadowColor: 'rgba(0, 0, 0, 0.75)',
+    textShadowOffset: {width: -1, height: 1},
+    textShadowRadius: 1,
   },
   errorMessage: {
     fontSize: screenHeight * 0.02,
@@ -107,4 +116,4 @@ const CadastroStyles = StyleSheet.create({
   // ICONS
 });
 
-export { CadastroStyles };
+export { SignUpStyles };

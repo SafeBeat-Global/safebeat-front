@@ -8,6 +8,7 @@ import FontAwesome from 'react-native-vector-icons/dist/FontAwesome';
 import { LoginStyles } from '../styles/LoginStyles.ts';
 import CredentialsValidation from '../components/CredentialsValidation.js';
 import { InputField } from '../components/InputField.js';
+import { handleLoginUser } from '../components/ApiService.js';
 
 const LoginScreen = () => {
 
@@ -23,6 +24,14 @@ const LoginScreen = () => {
       setErrorMessage('');
     }
   }, [email, pass]);
+
+  const loginUser = async () => {
+    const token = await handleLoginUser(email, pass, setErrorMessage);
+    if (token) {
+
+      navigation.navigate('MyTabs');
+    }
+  };
 
   return (
     <View style={LoginStyles.containerMaster}>
@@ -66,16 +75,14 @@ const LoginScreen = () => {
         </View>
         <TouchableWithoutFeedback
           onPress={() =>
-            navigation.navigate('Cadastro')
+            navigation.navigate('SignUp')
           }>
-          <Text style={LoginStyles.alreadyHaveAccountText}>Não tenho uma conta</Text>
+          <Text style={LoginStyles.dontHaveAccountText}>Não tenho uma conta</Text>
         </TouchableWithoutFeedback>
         <TouchableOpacity
-          onPress={() =>
-            navigation.navigate('Home')
-          }
-          style={LoginStyles.cadastrarButton}>
-          <Text style={LoginStyles.cadastrarText}>ENTRAR</Text>
+          onPress={loginUser}
+          style={LoginStyles.loginButton}>
+          <Text style={LoginStyles.loginText}>ENTRAR</Text>
         </TouchableOpacity>
       </View>
     </View>
