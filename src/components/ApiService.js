@@ -49,3 +49,37 @@ export const handleRegisterUser = async (name, email, pass, confirmPass, phone, 
     throw error;
   }
 };
+
+export const handleLoginUser = async (email, pass, setErrorMessage) => {
+  try {
+    if (!email || !CredentialsValidation.validateEmail(email) ||
+        !pass || !CredentialsValidation.validatePass(pass)) {
+      setErrorMessage('Por favor, preencha todos os campos corretamente.');
+      return null;
+    } else {
+      const response = await fetch(`http://${ip}:${port}/usuario/login`, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email: email,
+          senha: pass
+        })
+      });
+
+      if (!response.ok) {
+        setErrorMessage('Email ou senha incorretos.');
+        throw new Error('Erro na solicitação: ' + response.status);
+      }
+
+      const data = await response.json();
+      return data.token;
+    }
+
+  } catch (error) {
+    console.error('Erro na solicitação:', error);
+    throw error;
+  }
+};

@@ -6,11 +6,11 @@ import FontAwesome from 'react-native-vector-icons/dist/FontAwesome';
 
 // IMPORTS DO PROPRIO PROJETO
 import { handleRegisterUser } from '../components/ApiService.js';
-import { CadastroStyles } from '../styles/CadastroStyles.ts';
+import { SignUpStyles } from '../styles/SignUpStyles.ts';
 import CredentialsValidation from '../components/CredentialsValidation.js';
 import { InputField } from '../components/InputField.js';
 
-const CadastroScreen = () => {
+const SignUpScreen = () => {
 
   const navigation = useNavigation();
   
@@ -29,22 +29,22 @@ const CadastroScreen = () => {
   }, [name, email, pass, confirmPass, phone]);
 
   return (
-    <View style={CadastroStyles.containerMaster}>
-      <View style={CadastroStyles.header}>
+    <View style={SignUpStyles.containerMaster}>
+      <View style={SignUpStyles.header}>
         <TouchableOpacity
           onPress={() =>
             navigation.goBack()
           }>
           <FontAwesome
-            style={CadastroStyles.arrowIcon}
+            style={SignUpStyles.arrowIcon}
             name='arrow-left'
             color='white'>
           </FontAwesome>
         </TouchableOpacity>
-        <Text style={CadastroStyles.titleText}>CADASTRO</Text>
+        <Text style={SignUpStyles.titleText}>CADASTRO</Text>
       </View>
-      <View style={CadastroStyles.body}>
-      <Text style={CadastroStyles.credencialsTitle}>NOME</Text>
+      <View style={SignUpStyles.body}>
+      <Text style={SignUpStyles.credencialsTitle}>NOME</Text>
       <InputField
         iconLibrary='FontAwesome'
         value={name}
@@ -54,7 +54,7 @@ const CadastroScreen = () => {
         placeholder='Digite seu nome'
         keyboardType='default'
       />
-        <Text style={CadastroStyles.credencialsTitle}>EMAIL</Text>
+        <Text style={SignUpStyles.credencialsTitle}>EMAIL</Text>
         <InputField
           iconLibrary='MaterialCommunityIcons'
           value={email}
@@ -64,7 +64,7 @@ const CadastroScreen = () => {
           placeholder='Digite seu email'
           keyboardType='default'
         />
-        <Text style={CadastroStyles.credencialsTitle}>SENHA</Text>
+        <Text style={SignUpStyles.credencialsTitle}>SENHA</Text>
         <InputField
           iconLibrary='FontAwesome'
           value={pass}
@@ -75,7 +75,7 @@ const CadastroScreen = () => {
           keyboardType='default'
           secureTextEntry={true}
         />
-        <Text style={CadastroStyles.credencialsTitle}>CONFIRMAR SENHA</Text>
+        <Text style={SignUpStyles.credencialsTitle}>CONFIRMAR SENHA</Text>
         <InputField
           iconLibrary='FontAwesome'
           value={confirmPass}
@@ -86,7 +86,7 @@ const CadastroScreen = () => {
           keyboardType='default'
           secureTextEntry={true}
         />
-        <Text style={CadastroStyles.credencialsTitle}>TELEFONE</Text>
+        <Text style={SignUpStyles.credencialsTitle}>TELEFONE</Text>
         <InputField
           iconLibrary='FontAwesome'
           value={phone}
@@ -99,23 +99,23 @@ const CadastroScreen = () => {
           maxLength={15}
           minLength={15}
         />
-        <View style={CadastroStyles.errorContainer}>
-          {errorMessage ? <Text style={CadastroStyles.errorMessage}>{errorMessage}</Text> : null}
+        <View style={SignUpStyles.errorContainer}>
+          {errorMessage ? <Text style={SignUpStyles.errorMessage}>{errorMessage}</Text> : null}
         </View>
         <TouchableWithoutFeedback
           onPress={() =>
             navigation.navigate('Login')
           }>
-          <Text style={CadastroStyles.alreadyHaveAccountText}>Já tenho uma conta</Text>
+          <Text style={SignUpStyles.alreadyHaveAccountText}>Já tenho uma conta</Text>
         </TouchableWithoutFeedback>
         <TouchableOpacity
-          style={CadastroStyles.cadastrarButton}
+          style={SignUpStyles.cadastrarButton}
           onPress={() => handleRegisterUser(name, email, pass, confirmPass, phone, setErrorMessage)}>
-          <Text style={CadastroStyles.cadastrarText}>CADASTRAR</Text>
+          <Text style={SignUpStyles.cadastrarText}>CADASTRAR</Text>
         </TouchableOpacity>
       </View>
     </View>
   );
 };
 
-export { CadastroScreen };
+export { SignUpScreen };

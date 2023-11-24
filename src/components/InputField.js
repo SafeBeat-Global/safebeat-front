@@ -3,8 +3,8 @@ import { View, TextInput } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/dist/FontAwesome';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
-import CredentialsValidation from './CredentialsValidation';
-import { CadastroStyles } from '../styles/CadastroStyles';
+import CredentialsValidation from './CredentialsValidation.js';
+import { SignUpStyles } from '../styles/SignUpStyles.ts';
 
 
 const Icon = ({ library, ...props }) => {
@@ -23,15 +23,15 @@ const InputField = ({ value, setValue, validator, iconName, iconLibrary, formata
   const [color, setColor] = useState('#47992B');
 
   return (
-    <View style={CadastroStyles.inputContainer}>
+    <View style={SignUpStyles.inputContainer}>
       <Icon
         library={iconLibrary}
-        style={{...CadastroStyles.defaultIcon, color}}
+        style={{...SignUpStyles.defaultIcon, color}}
         name={iconName}
         color={color}>
       </Icon>
       <TextInput
-        style={{...CadastroStyles.input, color}}
+        style={{...SignUpStyles.input, color}}
         onChangeText={(text) => {
           const formattedText = formatar ? CredentialsValidation.formatPhone(text) : text;
           setValue(formattedText);

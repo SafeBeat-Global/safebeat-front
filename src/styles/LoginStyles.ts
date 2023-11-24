@@ -37,7 +37,7 @@ const LoginStyles = StyleSheet.create({
   // CONTAINERS
 
   //BUTTONS
-  cadastrarButton: {
+  loginButton: {
     backgroundColor: '#181F25',
     width: screenWidth * 0.6,
     height: screenHeight * 0.07,
@@ -72,19 +72,28 @@ const LoginStyles = StyleSheet.create({
     marginTop: screenHeight * 0.04,
     marginLeft: screenWidth * 0.06,
     fontWeight: 'bold',
+    textShadowColor: 'rgba(0, 0, 0, 0.15)',
+    textShadowOffset: {width: -1, height: 1},
+    textShadowRadius: 1,
   },
-  alreadyHaveAccountText: {
+  dontHaveAccountText: {
     color: '#181F25',
     fontSize: screenHeight * 0.022, 
     textAlign: 'center',
     marginBottom: screenHeight *0.01,
     fontWeight: 'bold',
+    textShadowColor: 'rgba(0, 0, 0, 0.3)',
+    textShadowOffset: {width: -1, height: 1},
+    textShadowRadius: 1,
   },
-  cadastrarText: {
+  loginText: {
     color: 'white',
     fontSize: screenHeight * 0.035,
     textAlign: 'center',
     fontWeight: 'bold',
+    textShadowColor: 'rgba(0, 0, 0, 0.75)',
+    textShadowOffset: {width: -1, height: 1},
+    textShadowRadius: 1,
   },
   errorMessage: {
     fontSize: screenHeight * 0.02,

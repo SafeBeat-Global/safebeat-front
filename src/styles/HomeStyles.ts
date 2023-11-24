@@ -15,33 +15,18 @@ const HomeStyles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: screenWidth * 0.7,
+    marginBottom: screenHeight * 0.15,
   },
   // CONTAINERS
 
-  //BUTTONS
-
-  // BUTTONS
-
   //TEXTS
-  systoleNumber: {
-    fontSize: screenHeight * 0.07,
-    fontWeight: 'bold',
-  },
-  systoleLabel: {
+  bloodPressureLabel: {
     fontSize: screenHeight * 0.03,
     color: '#FDFDFF',
     alignSelf: 'center',
     fontWeight: 'bold',
-  },
-  diastoleNumber: {
-    fontSize: screenHeight * 0.07,
-    fontWeight: 'bold',
-  },
-  diastoleLabel: {
-    fontSize: screenHeight * 0.03,
-    color: '#FDFDFF',
-    alignSelf: 'center',
-    fontWeight: 'bold',
+    
+    
   },
   mmHgLabel: {
     fontSize: screenHeight * 0.023,
@@ -49,14 +34,8 @@ const HomeStyles = StyleSheet.create({
     alignSelf: 'center',
     fontWeight: 'bold',
   },
-  heartRateNumber: {
+  bloodNumber: {
     fontSize: screenHeight * 0.07,
-    alignSelf: 'center',
-    fontWeight: 'bold',
-  },
-  heartRateLabel: {
-    fontSize: screenHeight * 0.03,
-    color: '#FDFDFF',
     alignSelf: 'center',
     fontWeight: 'bold',
   },
@@ -66,7 +45,7 @@ const HomeStyles = StyleSheet.create({
   //MISCELLANEOUS
   logo: {
     marginTop: screenHeight * 0.03,
-    width: screenWidth * 0.7,
+    width: screenWidth * 0.75,
     height: screenHeight * 0.25,
   },
   // MISCELLANEOUS

@@ -13,7 +13,7 @@ const MenuScreen = ({navigation}) => {
       <View style={MenuStyles.containerButtons}>
         <TouchableOpacity
           style={MenuStyles.cadastrarButton}
-          onPress={() => navigation.navigate('Cadastro')}
+          onPress={() => navigation.navigate('SignUp')}
         >
           <Text style={MenuStyles.cadastrarText}>CADASTRE-SE</Text>
         </TouchableOpacity>
