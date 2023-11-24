@@ -1,13 +1,17 @@
+// IMPORTS DO REACT
 import React, { useEffect, useState, useContext } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons.js'
+import FontAwesome from 'react-native-vector-icons/dist/FontAwesome';
+
+// IMPORTS DO PROJETO
 import { getUserInfo, handleDeleteUser } from '../../services/ApiService.js';
 import { UserContext } from '../../contexts/UserContext.js';
 import { UserStyles } from '../../styles/UserStyles.ts';
-import FontAwesome from 'react-native-vector-icons/dist/FontAwesome';
 import AlertModal from '../../components/AlertModal.js';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons.js'
 
+// Tela do perfil do usuario
 const UserScreen = () => {
   const navigation = useNavigation();
   const { userEmail, setUserEmail } = useContext(UserContext);
@@ -23,6 +27,7 @@ const UserScreen = () => {
     fetchUserInfo();
   }, []);
 
+  // Funcao que chama o metodo DELETE
   const handleDelete = async () => {
     const result = await handleDeleteUser(userEmail);
     if (result) {
@@ -33,7 +38,7 @@ const UserScreen = () => {
     }
   };
 
-  const handleDeleteConfirm = () => {
+  const handleDeleteAlert = () => {
     setModalVisible(true);
   };
 
@@ -42,16 +47,15 @@ const UserScreen = () => {
     handleDelete();
   };
 
-  const handleCancel = () => {
+  const handleDeleteCancel = () => {
     setModalVisible(false);
   };
 
+  // Funcao de logout
   const handleLogout = () => {
     setUserEmail(null);
     navigation.navigate('Menu');
   };
-
-  
 
   return (
     <View style={UserStyles.containerMaster}>
@@ -76,16 +80,15 @@ const UserScreen = () => {
             <Text style={UserStyles.infoText}>Email: {userInfo.email}</Text>
             <Text style={UserStyles.infoText}>Telefone: {userInfo.telefone}</Text>
           </View>
-          <TouchableOpacity onPress={handleDeleteConfirm} style={UserStyles.deleteButton}>
+          <TouchableOpacity onPress={handleDeleteAlert} style={UserStyles.deleteButton}>
             <Text style={UserStyles.deleteText}>Excluir Conta</Text>
           </TouchableOpacity>
           <AlertModal
             visible={modalVisible}
             onExit={handleDeleteYes}
-            onCancel={handleCancel}
+            onCancel={handleDeleteCancel}
             confirmationMessage="Você tem certeza que deseja excluir sua conta?"
           />
-
         </>
       )}
     </View>

@@ -31,7 +31,6 @@ const MenuStyles = StyleSheet.create({
     borderRadius: screenWidth * 0.08,
     justifyContent: 'center',
     marginTop: screenHeight * 0.04,
-
   },
   // BUTTONS
 

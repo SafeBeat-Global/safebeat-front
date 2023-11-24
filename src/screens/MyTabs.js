@@ -1,18 +1,23 @@
+// IMPORTS DO REACT
 import React, { useEffect, useState } from 'react';
 import { BackHandler } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Dimensions } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/dist/FontAwesome';
+
+// IMPORTS DO PROJETO
+import { screenOptions, iconStyles } from './MenuBar/ScreenOptions.js';
 import HomeScreen from './MenuBar/HomeScreen.js';
 import ExamsScreen from './MenuBar/ExamsScreen.js';
 import UserScreen from './MenuBar/UserScreen.js';
-import { screenOptions, iconStyles } from './MenuBar/ScreenOptions.js';
 import AlertModal from '../components/AlertModal.js';
-import { Dimensions } from 'react-native';
+
 
 const screenHeight = Dimensions.get('window').height;
 
-const Tab = createBottomTabNavigator();
+const BottomTab = createBottomTabNavigator();
 
+// Renderizacao do menu tab
 const MyTabs = () => {
   const [exitModalVisible, setExitModalVisible] = useState(false);
 
@@ -30,12 +35,12 @@ const MyTabs = () => {
     return () => backHandler.remove();
   }, []);
 
-  const handleConfirm = () => {
+  const handleExitYes = () => {
     BackHandler.exitApp();
     setExitModalVisible(false);
   };
 
-  const handleCancel = () => {
+  const handleExitCancel = () => {
     setExitModalVisible(false);
   };
 
@@ -43,12 +48,12 @@ const MyTabs = () => {
     <>
       <AlertModal
         visible={exitModalVisible}
-        onExit={handleConfirm}
-        onCancel={handleCancel}
+        onExit={handleExitYes}
+        onCancel={handleExitCancel}
         confirmationMessage="Deseja sair do aplicativo?"
       />
-      <Tab.Navigator initialRouteName="Home" screenOptions={screenOptions}>
-        <Tab.Screen 
+      <BottomTab.Navigator initialRouteName="Home" screenOptions={screenOptions}>
+        <BottomTab.Screen 
           name="Exames" 
           component={ExamsScreen} 
           options={{
@@ -58,7 +63,7 @@ const MyTabs = () => {
             ),
           }}
         />
-        <Tab.Screen 
+        <BottomTab.Screen 
           name="Home" 
           component={HomeScreen} 
           options={{
@@ -68,7 +73,7 @@ const MyTabs = () => {
             ),
           }}
         />
-        <Tab.Screen 
+        <BottomTab.Screen 
           name="Perfil" 
           component={UserScreen} 
           options={{
@@ -78,7 +83,7 @@ const MyTabs = () => {
             ),
           }}
         />
-      </Tab.Navigator>
+      </BottomTab.Navigator>
     </>
   );
 };

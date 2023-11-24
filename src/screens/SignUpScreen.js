@@ -11,6 +11,8 @@ import { SignUpStyles } from '../styles/SignUpStyles.ts';
 import CredentialsValidation from '../components/CredentialsValidation.js';
 import { InputField } from '../components/InputField.js';
 
+
+// Tela de cadastro
 const SignUpScreen = () => {
 
   const navigation = useNavigation();
@@ -20,6 +22,7 @@ const SignUpScreen = () => {
   const [pass, setPass] = useState('');
   const [confirmPass, setConfirmPass] = useState('');
   const [phone, setPhone] = useState('');
+
   const { setUserEmail } = useContext(UserContext);
 
   const [errorMessage, setErrorMessage] = useState('');
@@ -31,6 +34,7 @@ const SignUpScreen = () => {
     }
   }, [name, email, pass, confirmPass, phone]);
 
+  // Cadastro de usuario que chama o metodo POST
   const signUpUser = async () => {
     const data = await handleRegisterUser(name, email, pass, confirmPass, phone, setErrorMessage, setSuccessMessage);
     if (data) {

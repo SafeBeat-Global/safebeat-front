@@ -1,7 +1,12 @@
+
+// IMPORTS DO REACT
 import React from 'react';
 import { View, Text } from 'react-native';
+
+// IMPORTS DO PROJETO
 import { HomeStyles } from '../../styles/HomeStyles.ts';
 
+// Componente que renderiza as pressoes sanguineas
 const BloodPressure = ({ systole, diastole, color }) => (
   <View style={HomeStyles.containerBloodPressure}>
     <View>

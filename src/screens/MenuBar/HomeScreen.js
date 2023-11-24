@@ -1,9 +1,13 @@
+// IMPORTS DO REACT
 import React, { useState, useEffect } from 'react';
 import { View, Image } from 'react-native';
+
+// IMPORTS DO PROJETO
 import { HomeStyles } from '../../styles/HomeStyles';
 import BloodPressure from '../../components/healthmetrics/BloodPressure.js';
 import HeartRate from '../../components/healthmetrics/HeartRate.js';
 
+// Tela da home
 const HomeScreen = () => {
 
   const [diastole, setDiastole] = useState(60);

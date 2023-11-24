@@ -1,7 +1,11 @@
+// IMPORTS DO REACT
 import React from 'react';
 import { View, Image, Text, TouchableOpacity } from 'react-native';
+
+// IMPORTS DO PROJETO
 import { MenuStyles } from '../styles/MenuStyles.ts';
 
+// Tela inicial do aplicativo
 const MenuScreen = ({navigation}) => {
 
   return (

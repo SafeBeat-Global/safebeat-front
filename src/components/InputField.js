@@ -1,12 +1,14 @@
+// IMPORTS DO REACT
 import React, { useState } from 'react';
 import { View, TextInput } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/dist/FontAwesome';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
+// IMPORTS DO PROJETO
 import CredentialsValidation from './CredentialsValidation.js';
 import { SignUpStyles } from '../styles/SignUpStyles.ts';
 
-
+// Componente que renderiza flexivelmente os respectivos icones
 const Icon = ({ library, ...props }) => {
   switch (library) {
     case 'FontAwesome':
@@ -18,6 +20,7 @@ const Icon = ({ library, ...props }) => {
   }
 };
 
+// Componente que renderiza e valida as credenciais
 const InputField = ({ value, setValue, validator, iconName, iconLibrary, formatar, maxLength, minLength, secureTextEntry, ...props }) => {
 
   const [color, setColor] = useState('#47992B');
