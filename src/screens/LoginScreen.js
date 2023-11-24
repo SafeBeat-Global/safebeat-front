@@ -1,14 +1,15 @@
 // IMPORTS DO REACT
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { View, Text, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import FontAwesome from 'react-native-vector-icons/dist/FontAwesome';
 
 // IMPORTS DO PROPRIO PROJETO
+import { UserContext } from '../contexts/UserContext.js';
 import { LoginStyles } from '../styles/LoginStyles.ts';
 import CredentialsValidation from '../components/CredentialsValidation.js';
 import { InputField } from '../components/InputField.js';
-import { handleLoginUser } from '../components/ApiService.js';
+import { handleLoginUser } from '../services/ApiService.js';
 
 const LoginScreen = () => {
 
@@ -16,6 +17,7 @@ const LoginScreen = () => {
 
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
+  const { setUserEmail } = useContext(UserContext);
 
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -28,7 +30,7 @@ const LoginScreen = () => {
   const loginUser = async () => {
     const token = await handleLoginUser(email, pass, setErrorMessage);
     if (token) {
-
+      setUserEmail(email);
       navigation.navigate('MyTabs');
     }
   };

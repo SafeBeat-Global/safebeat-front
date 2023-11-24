@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { HomeStyles } from '../styles/HomeStyles.ts';
+import { HomeStyles } from '../../styles/HomeStyles.ts';
 
 const HeartRate = ({ heartRate, color }) => (
   <View>

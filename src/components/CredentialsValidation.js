@@ -25,6 +25,16 @@ const CredentialsValidation = {
   validatePhone: (phone) => {
     return phone.length === 15;
   },
+  validateCredentials: (name, email, pass, confirmPass, phone) => {
+    if (!name || !CredentialsValidation.validateName(name) ||
+      !email || !CredentialsValidation.validateEmail(email) ||
+      !pass || !CredentialsValidation.validatePass(pass) ||
+      !confirmPass || !CredentialsValidation.validateConfirmPass(pass, confirmPass) ||
+      !phone || !CredentialsValidation.validatePhone(phone)) {
+      return false;
+    }
+    return true;
+  },
 }
 
 export default CredentialsValidation;

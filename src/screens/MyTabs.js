@@ -6,7 +6,7 @@ import HomeScreen from './MenuBar/HomeScreen.js';
 import ExamsScreen from './MenuBar/ExamsScreen.js';
 import UserScreen from './MenuBar/UserScreen.js';
 import { screenOptions, iconStyles } from './MenuBar/ScreenOptions.js';
-import ExitModal from '../components/ExitModal.js';
+import AlertModal from '../components/AlertModal.js';
 import { Dimensions } from 'react-native';
 
 const screenHeight = Dimensions.get('window').height;
@@ -30,7 +30,7 @@ const MyTabs = () => {
     return () => backHandler.remove();
   }, []);
 
-  const handleExit = () => {
+  const handleConfirm = () => {
     BackHandler.exitApp();
     setExitModalVisible(false);
   };
@@ -41,10 +41,11 @@ const MyTabs = () => {
 
   return (
     <>
-      <ExitModal
+      <AlertModal
         visible={exitModalVisible}
-        onExit={handleExit}
+        onExit={handleConfirm}
         onCancel={handleCancel}
+        confirmationMessage="Deseja sair do aplicativo?"
       />
       <Tab.Navigator initialRouteName="Home" screenOptions={screenOptions}>
         <Tab.Screen 
