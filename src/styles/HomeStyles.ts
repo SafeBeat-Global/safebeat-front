@@ -25,8 +25,6 @@ const HomeStyles = StyleSheet.create({
     color: '#FDFDFF',
     alignSelf: 'center',
     fontWeight: 'bold',
-    
-    
   },
   mmHgLabel: {
     fontSize: screenHeight * 0.023,
@@ -39,7 +37,6 @@ const HomeStyles = StyleSheet.create({
     alignSelf: 'center',
     fontWeight: 'bold',
   },
-
   // TEXTS
 
   //MISCELLANEOUS

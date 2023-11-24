@@ -11,6 +11,7 @@ import CredentialsValidation from '../components/CredentialsValidation.js';
 import { InputField } from '../components/InputField.js';
 import { handleLoginUser } from '../services/ApiService.js';
 
+// Tela de login
 const LoginScreen = () => {
 
   const navigation = useNavigation();
@@ -27,6 +28,7 @@ const LoginScreen = () => {
     }
   }, [email, pass]);
 
+  // Tela que chama o metodo POST para confirmar o login
   const loginUser = async () => {
     const token = await handleLoginUser(email, pass, setErrorMessage);
     if (token) {

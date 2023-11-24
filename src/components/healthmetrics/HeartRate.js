@@ -1,9 +1,13 @@
+// IMPORTS DO REACT
 import React from 'react';
 import { View, Text } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import Icon from 'react-native-vector-icons/FontAwesome';
+
+// IMPORTS DO PROJETO
 import { HomeStyles } from '../../styles/HomeStyles.ts';
 
+// Componente que renderiza a animacao do batimento cardiaco
 const HeartRate = ({ heartRate, color }) => (
   <View>
     <Animatable.View animation={{ 0: { scale: 1 }, 0.5: { scale: 1.2 }, 1: { scale: 1 } }} iterationCount="infinite" duration={2500} style={{flexDirection: 'row', alignItems: 'center'}}>

@@ -4,11 +4,16 @@ const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
 const ExamsStyles = StyleSheet.create({
+
+  // CONTAINERS
   containerMaster: {
     flex: 1,
     backgroundColor: '#181F25',
     alignItems: 'center',
   },
+  //CONTAINERS
+
+  // TEXTS
   nothingHereText: {
     fontSize: screenHeight * 0.05,
     marginTop: screenHeight * 0.03,
@@ -21,10 +26,14 @@ const ExamsStyles = StyleSheet.create({
     textAlign: 'center',
     color: '#FDFDFF',
   },
+  //TEXTS
+
+  // ICONS
   sadIcon: {
     fontSize: screenHeight * 0.2,
     marginTop: screenHeight * 0.07,
   },
+  //ICONS
 });
 
 export { ExamsStyles };

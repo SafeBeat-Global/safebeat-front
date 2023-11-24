@@ -4,26 +4,18 @@ const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
 const AlertModalStyles = StyleSheet.create({
-
-  centeredView: {
+  // CONTAINERS
+  containerMaster: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: 'rgba(0, 0, 0, 0.7)',
   },
-  modalView: {
+  containerModal: {
     width: screenWidth * 0.9,
     height: screenHeight * 0.18,
     backgroundColor: "#FDFDFF",
     borderRadius: screenWidth * 0.05,
-  },
-  modalText: {
-    fontSize: screenHeight * 0.03,
-    marginTop: screenHeight * 0.01,
-    fontWeight: 'bold',
-    textAlign: "center",
-    textShadowOffset: {width: -1, height: 1},
-    textShadowRadius: 1
   },
   buttonsContainer: {
     width: screenWidth * 0.8,
@@ -32,6 +24,9 @@ const AlertModalStyles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
+  //CONTAINERS
+
+  // BUTTONS
   button: {
     height: screenHeight * 0.05,
     width: screenWidth * 0.3,
@@ -45,6 +40,17 @@ const AlertModalStyles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
   },
+  //BUTTONS
+
+  // TEXTS
+  modalText: {
+    fontSize: screenHeight * 0.03,
+    marginTop: screenHeight * 0.01,
+    fontWeight: 'bold',
+    textAlign: "center",
+    textShadowOffset: {width: -1, height: 1},
+    textShadowRadius: 1
+  },
   textStyle: {
     fontSize: screenHeight * 0.03,
     fontWeight: 'bold',
@@ -53,7 +59,9 @@ const AlertModalStyles = StyleSheet.create({
     textShadowColor: 'rgba(0, 0, 0, 0.75)',
     textShadowOffset: {width: -1, height: 1},
     textShadowRadius: 10
-  }
+  },
+
+  //TEXTS
 });
 
 export { AlertModalStyles };

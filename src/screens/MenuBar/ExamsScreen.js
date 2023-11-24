@@ -1,8 +1,12 @@
+// IMPORTS DO REACT
 import React from 'react';
 import { View, Text } from 'react-native';
-import { ExamsStyles } from '../../styles/ExamsStyles.ts';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
+// IMPORTS DO PROJETO
+import { ExamsStyles } from '../../styles/ExamsStyles.ts';
+
+// Tela dos exames
 const ExamsScreen = () => (
   <View style={ExamsStyles.containerMaster}>
     <MaterialCommunityIcons
