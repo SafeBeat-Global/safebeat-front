@@ -6,10 +6,10 @@ import { Dimensions } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/dist/FontAwesome';
 
 // IMPORTS DO PROJETO
-import { screenOptions, iconStyles } from './MenuBar/ScreenOptions.js';
-import HomeScreen from './MenuBar/HomeScreen.js';
-import ExamsScreen from './MenuBar/ExamsScreen.js';
-import UserScreen from './MenuBar/UserScreen.js';
+import { screenOptions, iconStyles } from './menubar/ScreenOptions.js';
+import HomeScreen from './menubar/HomeScreen.js';
+import ExamsScreen from './menubar/ExamsScreen.js';
+import UserScreen from './menubar/UserScreen.js';
 import AlertModal from '../components/AlertModal.js';
 
 

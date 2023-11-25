@@ -21,31 +21,43 @@ const UserScreen = () => {
   const { userEmail, setUserEmail } = useContext(UserContext);
   const [userInfo, setUserInfo] = useState(null);
   const [newPhone, setNewPhone] = useState('');
+  const [isPhoneChanged, setIsPhoneChanged] = useState(false);
+
+  const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
   const [modalVisible, setModalVisible] = useState(false);
 
+  const clearMessages = () => {
+    setSuccessMessage('');
+    setErrorMessage('');
+  };
+
   useEffect(() => {
     const fetchUserInfo = async () => {
-      const info = await getUserInfo(userEmail);
-      setUserInfo(info);
-      setNewPhone(info.telefone);
+      try {
+        const info = await getUserInfo(userEmail);
+        setUserInfo(info);
+        setNewPhone(info.telefone);
+      } catch (error) {
+        console.error(error);
+      }
     };
 
     fetchUserInfo();
   }, []);
 
-  // Funcao que chama o metodo DELETE
   const handleDelete = async () => {
     const result = await handleDeleteUser(userEmail);
     if (result) {
       setUserEmail(null);
       navigation.navigate('Menu');
     } else {
-      console.error('Erro ao excluir o usuário');
+      clearMessages();
+      setErrorMessage('Erro ao excluir a conta');
     }
   };
 
-  // Modal
   const handleDeleteAlert = () => {
     setModalVisible(true);
   };
@@ -59,10 +71,38 @@ const UserScreen = () => {
     setModalVisible(false);
   };
 
-  // Funcao de logout
+  const handlePhoneChange = (phone) => {
+    const formattedPhone = CredentialsValidation.formatPhone(phone);
+    setNewPhone(formattedPhone);
+    setIsPhoneChanged(formattedPhone !== userInfo.telefone);
+    clearMessages();
+  };
+
   const handleLogout = () => {
     setUserEmail(null);
     navigation.navigate('Menu');
+    clearMessages();
+  };
+
+  const handleUpdatePhone = async () => {
+    if (!CredentialsValidation.validatePhone(newPhone)) {
+      setErrorMessage('Telefone Inválido');
+      return;
+    }
+  
+    const formattedPhone = CredentialsValidation.formatPhone(newPhone);
+  
+    const result = await handleUpdateUserPhone(userEmail, formattedPhone);
+    if (result) {
+      const info = await getUserInfo(userEmail);
+      setUserInfo(info);
+      setIsPhoneChanged(false);
+      clearMessages();
+      setSuccessMessage('Telefone alterado com sucesso!');
+    } else {
+      clearMessages();
+      setErrorMessage('Erro ao tentar atualizar o telefone');
+    }
   };
 
 
@@ -86,17 +126,23 @@ const UserScreen = () => {
             <Text style={UserStyles.userName}>{userInfo.nome}</Text>
           </View>
           <Text style={UserStyles.infoText}>{userInfo.email}</Text>
-            <TextInput
-                style={UserStyles.phoneInput}
-                value={newPhone}
-                keyboardType='phone-pad'
-                maxLength={15}
-              />
-            <TouchableOpacity
-              style={UserStyles.saveButton}
-            >
-              <Text style={UserStyles.saveText}>Salvar Alterações</Text>
-            </TouchableOpacity>
+          <TextInput
+              style={UserStyles.phoneInput}
+              onChangeText={handlePhoneChange}
+              value={newPhone}
+              keyboardType='phone-pad'
+              maxLength={15}/>
+          <View style={UserStyles.messageContainer}>
+            {errorMessage ? <Text style={UserStyles.errorMessage}>{errorMessage}</Text> : null}
+            {successMessage ? <Text style={UserStyles.successMessage}>{successMessage}</Text> : null}
+          </View>
+          <TouchableOpacity
+            onPress={handleUpdatePhone}
+            style={[UserStyles.saveButton,
+            !isPhoneChanged && {opacity: 0.5}]}
+            disabled={!isPhoneChanged}>
+            <Text style={UserStyles.saveText}>Salvar Alterações</Text>
+          </TouchableOpacity>
           <TouchableOpacity onPress={handleDeleteAlert} style={UserStyles.deleteButton}>
             <Text style={UserStyles.deleteText}>Excluir Conta</Text>
           </TouchableOpacity>
