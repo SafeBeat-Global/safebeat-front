@@ -1,79 +1,99 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+<div align="center">
+    <img src="src/assets/safe-beat-transparent-1.png" alt="logo beatsafe" width="600">
+</div>
+<p align='center'>
+   O SafeBeat é um sistema inovador que utiliza IA e IoT para monitorar a saúde cardíaca dos pacientes. Através de uma pulseira, coletamos dados de frequência cardíaca em tempo real, permitindo a detecção precoce de possíveis infartos. Os dados são analisados e            compartilhados com Protetores e Guardiões, que podem ser parentes ou profissionais de saúde. Além disso, contatos de emergência são notificados em caso de incidentes. A precisão da IA é aprimorada através de exames regulares e informações do paciente. Juntos,           estamos criando um futuro mais seguro para a saúde do coração.
 
-# Getting Started
+</p>
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+### Sumário
+1. [URLs relevantes](#URLs-relevantes)
+2. [Ambiente de desenvolvimento](#Ambiente-de-desenvolvimento)
+3. [Troubleshooting](#Troubleshooting)
+4. [Instalação do projeto](#Instalacao-do-projeto)
+5. [Iniciar aplicativo](#Iniciar-aplicativo)
+6. [Instruções de uso](#Instruções-de-uso)
+7. [Testes e limitações](#Testes-e-limitacoes)
+8. [Agradecimentos](#Agradecimentos)
 
-## Step 1: Start the Metro Server
+## URLs relevantes
+- *[Video PITCH SafeBeat](https://www.youtube.com/watch?v=FmfozoqE9Yc)*
+- *[API de comunicação](https://github.com/SafeBeat-Global/java-api)*
+- *[React Native - Environment Setup](https://reactnative.dev/docs/environment-setup)*
+- *[Troubleshooting](https://reactnative.dev/docs/troubleshooting)*
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+## Ambiente de desenvolvimento
 
-To start Metro, run the following command from the _root_ of your React Native project:
+>**OBSERVAÇÃO**: Veja a documentação oficial *[React Native - Environment Setup](https://reactnative.dev/docs/environment-setup)* para definir e configurar corretamente o seu ambiente de desenvolvimento.
 
-```bash
-# using npm
-npm start
+## Troubleshooting
 
-# OR using Yarn
-yarn start
+Caso lhe ocorra algum problema na configuração do seu ambiente, veja nessa página *[Troubleshooting](https://reactnative.dev/docs/troubleshooting)*.
+
+## Instalação do projeto
+
+Após configurar o seu ambiente de desenvolvimento para rodar o react-native, instale o projeto pelo meio convencional ou por algum terminal. Primeiramente se direcione ao local desejado e rode o seguinte comando:
 ```
-
-## Step 2: Start your Application
-
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
-
-### For Android
-
-```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
+git clone https://github.com/SafeBeat-Global/safebeat-front
 ```
-
-### For iOS
-
-```bash
-# using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
+Feito isso, abra o seu editor, recomenda-se o *[Visual Studio Code](https://code.visualstudio.com/Download)*, e selecione o projeto front-end do SafeBeat. Ao abrir, navegue até a pasta `/src/services/ApiService.js` e edite o campo "seu-ip" `const ip = 'seu-ip';` para o seu ip da máquina. Para verificar o seu ip, acesse um terminal ou, se estiver no Windows, o CMD.
+Nele digite o código:
 ```
+ipconfig
+```
+Copie e cole o seu IPV4 e substitua no campo mencionado acima. **Não esqueça de salvar as mudanças!**
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+Abra o seu emulador mobile Android Studio (preferencialmente) e um terminal no diretório do projeto já baixado e rode os seguintes comandos:
+```
+npm install
+```
+Esse comando vai instalar todas as dependências usadas no projeto
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+## Iniciar o aplicativo
 
-## Step 3: Modifying your App
+Depois de esperar a instalação dos node_modules, digite, ainda no terminal a fim de iniciar o projeto no seu emulador android:
+```
+npx react-native start
+```
+Logo em seguida, mostrará na tela as seguintes opções:
+```
+r - reload the app
+d - open developer menu
+i - run on IOS
+a - run on Android
+```
+Aperte a tecla "a" para abrir no Android.
+**Pronto**, a sua aplicação agora está aberta. Para conseguir usar em totalidade o aplicativo, precisará baixar a *[API de comunicação](https://github.com/SafeBeat-Global/java-api)*, lá terá o passo a passo de como usá-la.
 
-Now that you have successfully run the app, let's modify it.
+## Instruções de uso
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+O aplicativo é bem intuitivo e simples, facilitando o seu uso para o dia a dia.
+Basta fazer o cadastro e logar que já terá as informações da saúde do seu coração em mãos e assegurada por outros também.
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+<div align="center">
+   <img src="src/assets/telainicial.png" alt="tela inicial">
+</div>
+<div align="center">
+   <img src="src/assets/cadastro.png" alt="tela cadastro">
+   <img src="src/assets/login.png" alt="tela login">
+</div>
+<div>
+   <img src="src/assets/exames.png" alt="tela exames">
+   <img src="src/assets/telacoracao.png" alt="tela home">
+   <img src="src/assets/perfil.png" alt="tela perfil">
+</div>
 
-## Congratulations! :tada:
+## Testes e limitações
 
-You've successfully run and modified your React Native App. :partying_face:
+O aplicativo está na versão Open Beta 1.0.0 como uma versão protótipo para testes e uso disciplinar.
+Bugs ou erros podem ser encontrados ao manipular dados de requisições advindas da API, bem como outros
+eventuais problemas que podem ser observados ao usar a aplicação.
 
-### Now what?
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+## Agradecimentos
 
-# Troubleshooting
+Agradecemos aos desenvolvedores que dedicaram seu tempo e habilidades para aprimorar o código-fonte e a funcionalidade do aplicativo. Suas contribuições são inestimáveis e moldaram positivamente a experiência do usuário.
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+Além disso, extendemos nossa gratidão àqueles que colaboraram na criação e melhoria da documentação. A clareza e a acessibilidade da informação são fundamentais, e sua ajuda nesse aspecto não passa despercebida.
 
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+Agradecemos também à comunidade de código aberto, cujas ferramentas e frameworks foram essenciais para o desenvolvimento suave e eficiente do ImaginAI. Ao compartilhar recursos e conhecimentos, todos contribuímos para o avanço coletivo da tecnologia. Muito obrigado.
