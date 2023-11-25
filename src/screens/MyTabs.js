@@ -35,6 +35,7 @@ const MyTabs = () => {
     return () => backHandler.remove();
   }, []);
 
+  // Modal
   const handleExitYes = () => {
     BackHandler.exitApp();
     setExitModalVisible(false);
@@ -43,6 +44,7 @@ const MyTabs = () => {
   const handleExitCancel = () => {
     setExitModalVisible(false);
   };
+  //Modal
 
   return (
     <>
