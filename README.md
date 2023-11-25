@@ -77,7 +77,7 @@ Basta fazer o cadastro e logar que já terá as informações da saúde do seu c
    <img src="src/assets/cadastro.png" alt="tela cadastro">
    <img src="src/assets/login.png" alt="tela login">
 </div>
-<div>
+<div align="center">
    <img src="src/assets/exames.png" alt="tela exames">
    <img src="src/assets/telacoracao.png" alt="tela home">
    <img src="src/assets/perfil.png" alt="tela perfil">
@@ -96,4 +96,4 @@ Agradecemos aos desenvolvedores que dedicaram seu tempo e habilidades para aprim
 
 Além disso, extendemos nossa gratidão àqueles que colaboraram na criação e melhoria da documentação. A clareza e a acessibilidade da informação são fundamentais, e sua ajuda nesse aspecto não passa despercebida.
 
-Agradecemos também à comunidade de código aberto, cujas ferramentas e frameworks foram essenciais para o desenvolvimento suave e eficiente do ImaginAI. Ao compartilhar recursos e conhecimentos, todos contribuímos para o avanço coletivo da tecnologia. Muito obrigado.
+Agradecemos também à comunidade de código aberto, cujas ferramentas e frameworks foram essenciais para o desenvolvimento suave e eficiente da SafeBeat. Ao compartilhar recursos e conhecimentos, todos contribuímos para o avanço coletivo da tecnologia. Muito obrigado.
