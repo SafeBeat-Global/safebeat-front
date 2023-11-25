@@ -1,3 +1,9 @@
+/*
+	Adilson Roberto Cavicchioli Junior	  RM94548
+	Fernando Cheng Gong			              RM93823
+	Gustavo Marquez Ribeiro			          RM92117
+*/
+
 import React, { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';

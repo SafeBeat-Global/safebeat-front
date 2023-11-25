@@ -1,4 +1,5 @@
 import CredentialsValidation from "../components/CredentialsValidation";
+import { fetchWithNetworkErrorHandling } from "./ErrorHandlingService.js";
 
 const ip = '192.168.15.5'; // ip da máquina
 const port = '8080'; // port vide a api de comunicacao
@@ -9,29 +10,31 @@ export const handleRegisterUser = async (name, email, pass, confirmPass, phone, 
     if (!CredentialsValidation.validateCredentials(name, email, pass, confirmPass, phone)) {
       setErrorMessage('Por favor, preencha todos os campos corretamente.');
       return;
-  } else {
-    const response = await fetch(`http://${ip}:${port}/usuario/registrar`, {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        nome: name,
-        email: email,
-        senha: pass,
-        telefone: phone,
-        tipoUsuario: 'comum'
-      })
-    });
+    } else {
+      const response = await fetchWithNetworkErrorHandling(`http://${ip}:${port}/usuario/registrar`, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          nome: name,
+          email: email,
+          senha: pass,
+          telefone: phone,
+          tipoUsuario: 'comum'
+        })
+      });
 
-    if (response.ok) {
-      setSuccessMessage('Cadastro feito com sucesso!');
+      if (response.ok) {
+        setSuccessMessage('Cadastro feito com sucesso!');
+        const data = await response.json();
+        return data, {"sucesso": true};
+      } else {
+        setErrorMessage(`Erro desconhecido: ${response.status} ${response.statusText}`);
+        return;
+      }
     }
-
-    const data = await response.json();
-    return data, {"sucesso": true};
-  }
 
   } catch (error) {
     console.error('Erro na solicitação:', error);
@@ -140,4 +143,60 @@ export const handleDeleteUser = async (email) => {
   }
 };
 
+// MOCK TEMPORÁRIO
+export const handleUpdateUserPhone = async (email, newPhone, setErrorMessage) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (email && newPhone) {
+        resolve({
+          telefone: newPhone,
+        });
+      } else {
+        reject('Telefone inválido');
+      }
+    }, 1000);
+  });
+};
+//MOCK TEMPORÁRIO
 
+/* EM DESENVOLVIMENTO 
+
+// Metodo PUT para atualizar os dados do usuario
+export const handleUpdateUserPhone = async (email, newPhone) => {
+  try {
+    if (!email || !CredentialsValidation.validateEmail(email)) {
+      console.error('Email inválido');
+      return null;
+    } else {
+      const userInfo = await getUserInfo(email);
+      if (!userInfo) {
+        console.error('Informações do usuário não encontradas');
+        return null;
+      }
+      
+      const response = await fetch(`http://${ip}:${port}/usuario/${encodeURIComponent(userInfo.id)}`, {
+        method: 'PUT',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          telefone: newPhone,
+        })
+      });
+
+      if (!response.ok) {
+        console.error('Erro na resposta da API:', response.statusText);
+        return null;
+      }
+
+      const data = await response.json();
+      return data;
+    }
+
+  } catch (error) {
+    console.error('Erro na solicitação:', error);
+    throw error;
+  }
+};
+*/
